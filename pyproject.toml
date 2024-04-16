@@ -1,6 +1,18 @@
 [build-system]
-requires = ["hatchling", "hatch-vcs"]
-build-backend = "hatchling.build"
+requires = ["setuptools>=64", "setuptools_scm>=8"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools_scm]
+version_file = "src/testpyproj/_version.py"
+
+# Or using Hatchling instead:
+# [build-system]
+# requires = ["hatchling==1.12.0", "hatch-vcs==0.4.0", "setuptools-scm>=8"]
+# build-backend = "hatchling.build"
+
+# [tool.hatch]
+# version.source = "vcs"
+# build.hooks.vcs.version-file = "src/testpyproj/_version.py"
 
 [project]
 name = "testpyproj"
@@ -21,7 +33,5 @@ classifiers = [
 Homepage = "https://github.com/pypa/sampleproject"
 Issues = "https://github.com/pypa/sampleproject/issues"
 
-[tool.hatch]
-version.source = "vcs"
-build.hooks.vcs.version-file = "src/testpyproj/version.py"
-
+[tool.setuptools.packages.find]
+where = ["src"]
